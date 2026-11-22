@@ -34,3 +34,7 @@ shifty*.txt
 *.log
 .DS_Store
 Thumbs.db
+
+# 令牌文件：绝不允许入库
+.token
+*.token
