@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python: ["3.9", "3.12", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: 语法与导入检查
+        run: python -c "import unitycn; print(unitycn.__version__)"
+
+      - name: 单元测试
+        run: python -m unittest discover -s tests -v
+
+      - name: CLI 冒烟
+        run: |
+          python -m unitycn --help
+          python -m unitycn doctor || true
+
+  # 元数据 API 的可用性单独巡检：它不依赖网络出口地区，
+  # 一旦这里挂了说明 Unity 改了接口，README 里的说法就需要更新。
+  metadata:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 验证官方 API 结构未变
+        run: |
+          python - <<'PY'
+          from unitycn.unity import find_release, hub_releases
+          rel = find_release("7000.0.0a20", stream="ALPHA")
+          assert rel.size > 1_000_000_000, rel.size
+          assert len(rel.md5) == 32, rel.md5
+          print("editor ok:", rel.version, rel.size, rel.md5)
+          hub = hub_releases("win32")
+          assert hub and all("version" in x for x in hub)
+          print("hub ok:", len(hub), "releases")
+          PY
