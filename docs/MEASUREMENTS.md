@@ -365,6 +365,85 @@ Windows 中文环境下 `subprocess.run(text=True)` 默认按 GBK 解码，
 拉到一个含 `0xA8` 字节的响应就抛 `UnicodeDecodeError`。
 必须显式 `encoding="utf-8", errors="replace"`。
 
+同一个根因还会在**反方向**咬人：用 PowerShell 的 `ConvertTo-Json` 往 GitHub API
+发中文，会按 GBK 编码发出，对方按 UTF-8 解析后中文全变成 `?`。
+**必须用 Python `json.dumps(..., ensure_ascii=False).encode("utf-8")`。**
+
+---
+
+## 11. Unity CLI 在中国大陆（重要）
+
+Unity 官方在 2026 年推了 `unity` 命令行工具（`unity.com/install.ps1`），
+它同时是 **MCP 服务器的官方替代品** —— 官方已弃用编辑器内 AI 助手包里的 MCP server，
+改用 `unity mcp` 子命令（<https://docs.unity.com/en-us/unity-cli/replace-mcp-server-unity-cli>）。
+
+### 11.1 和下载编辑器是两回事
+
+| 项 | 是否被区域重定向 |
+|---|---|
+| 安装脚本 `unity.com/install.ps1` | ❌ 可直连（200，回源 Akamai） |
+| 版本清单 `public-cdn.cloud.unity3d.com/hub/prod/cli/latest.json` | ⚠️ 307 重定向，但**目标存在** |
+| 二进制 `.../cli/1.0.0/unity-windows-x64.exe` | ⚠️ 307 重定向，但**目标存在** |
+| 编辑器安装包 `download.unity3d.com/download_unity/...` | ❌ 302 到空仓库（404） |
+
+**关键区别**：`public-cdn.cloud.unity3d.com` 被 307 到
+`public-cdn.cloud.unitychina.cn`，但**那个 CDN 上真的存了 CLI 的文件**：
+
+```
+$ curl -o /dev/null -w "%{http_code}" \
+    https://public-cdn.cloud.unitychina.cn/hub/prod/cli/latest.json
+200                      # 2854 字节，内容完整
+$ curl -o /dev/null -w "%{http_code} %{size_download}" \
+    https://public-cdn.cloud.unitychina.cn/hub/prod/cli/1.0.0/unity-windows-x64.exe
+206  45564336            # 完整下载
+```
+
+而 `download_unity/` 前缀下什么都没有。**同样是"重定向到 unitychina"，
+一个能用一个不能用 —— 取决于目标路径在不在中国 CDN 上。**
+
+### 11.2 实测结果
+
+| 项 | 值 |
+|---|---|
+| 清单 `latest.json` | 200，2854 字节 |
+| 二进制 `unity-windows-x64.exe` | 45,564,336 字节 |
+| 下载速度 | **7.56 MB/s**（43.5 MB / 5.7s） |
+| SHA256 | `1bca103f...07c73`，与清单一致 ✅ |
+| 装上后 `unity --version` | `1.0.0` |
+
+**不需要代理。** 用官方脚本 `irm https://unity.com/install.ps1 | iex` 即可，
+它会走 `public-cdn` → 307 → 中国 CDN，全程直连。
+
+### 11.3 注意 `editors` 命令的语义
+
+`unity editors` 列的是**远端可下载的版本**，不是本机已安装的：
+
+```
+$ unity editors --format json
+发现 6 个: 6000.7.0b10 / 6000.3.29f1 / 6000.0.85f2 / 6000.6.10f1 / 7000.0.0a20 / 6000.0.23f1
+$ (本机实际只装了 6000.0.23f1 和 7000.0.0a20)
+```
+
+返回的字段只有 `version` / `alias` / `architecture` / `default`，**没有本地路径**。
+要列本地安装用 `unity editors path` 或直接看注册表
+`HKLM\SOFTWARE\Unity Technologies\Installer`。
+
+### 11.4 它能做什么（对你已装的 Unity 7 有实用价值）
+
+装 `com.unity.pipeline` 包之后，CLI 可以**直接驱动运行中的编辑器**：
+
+```bash
+unity status                          # 找连上的编辑器
+unity command                         # 列该编辑器暴露的命令
+unity command editor.playmode start   # 进 Play 模式
+unity command eval 'new GameObject("Joe");'   # 跑任意 C#
+unity mcp configure                   # 给 Claude Code / Codex 等接 MCP
+```
+
+前提：项目里装了 `com.unity.pipeline`（Unity 6.0+），用 `unity pipeline install` 加。
+**编辑器处于 Safe Mode（有编译错误）时 Pipeline 不加载，CLI 会连不上** —— 此时
+`unity pipeline list` 会明确报 Safe Mode，而不是静默失败。
+
 ---
 
 ## 复现方法
