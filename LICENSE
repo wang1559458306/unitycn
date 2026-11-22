@@ -1,0 +1,37 @@
+MIT License
+
+Copyright (c) 2026 unitycn contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+关于代理池的附加说明
+
+本项目包含从公开列表抓取免费代理的功能。这些代理是他人配置不当而暴露在
+公网上的服务，不属于公共基础设施。
+
+使用本工具抓取的代理时，请遵守：
+
+1. 仅用于下载 Unity 官方发布的公开文件等低频、合法用途。
+2. 不要用于高频请求、扫描、绕过目标站点的访问控制。
+3. 不要将其用于任何违反当地法律的行为。
+
+维护者不控制也不背书任何第三方代理的可用性、安全性或合法性。通过第三方
+代理传输的流量理论上可被代理持有者观察，请勿通过它传输凭据或敏感数据。
