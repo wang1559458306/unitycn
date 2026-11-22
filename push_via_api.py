@@ -96,12 +96,27 @@ def get_sha(repo, token, path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", required=True, help="owner/name")
-    ap.add_argument("--token", required=True)
+    ap.add_argument("--token", help="直接用 token（会进 shell 历史，不推荐）")
+    ap.add_argument("--token-file", default=".token",
+                    help="从文件读 token（推荐）。默认 .token")
     ap.add_argument("--root", default=".")
     ap.add_argument("--branch", default="main")
     ap.add_argument("--skip-ci", action="store_true",
                     help="跳过 .github/workflows（PAT 缺 workflow 权限时）")
     a = ap.parse_args()
+
+    token = a.token
+    if not token:
+        if not os.path.exists(a.token_file):
+            raise SystemExit(
+                f"缺 token。二选一：\n"
+                f"  echo 你的token > {a.token_file}\n"
+                f"  或加 --token 参数")
+        with open(a.token_file, encoding="utf-8") as f:
+            token = f.read().strip()
+    if not token:
+        raise SystemExit(f"{a.token_file} 是空的")
+    a.token = token
 
     os.chdir(a.root)
     files = ls_files(".")
