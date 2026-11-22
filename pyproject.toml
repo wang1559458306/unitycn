@@ -1,0 +1,33 @@
+[build-system]
+# 涓嬮檺鍘嬪埌 setuptools 61锛圥EP 621 鏀寔鐨勬渶浣庣増鏈級锛岄伩鍏嶅湪鍙楅檺缃戠粶閲?# 鍥犱负鎷変笉鍒版柊鐗?setuptools 鑰岃涓嶄笂銆傝繖涓」鐩殑鐢ㄦ埛寰€寰€杩?PyPI 閮藉彈闄愩€?requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unitycn"
+version = "1.0.0"
+description = "鍦ㄤ腑鍥藉ぇ闄嗚幏鍙?Unity 6 / 7 缂栬緫鍣ㄤ笌鏋勫缓妯″潡锛堟棤闇€ VPN锛?
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "unitycn contributors" }]
+keywords = ["unity", "unity3d", "china", "download", "proxy"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Environment :: Console",
+    "Topic :: Utilities",
+]
+
+[project.scripts]
+unitycn = "unitycn.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/wang1559458306/unitycn"
+Issues = "https://github.com/wang1559458306/unitycn/issues"
+
+[tool.setuptools.packages.find]
+include = ["unitycn*"]
+
+[tool.setuptools.package-data]
+unitycn = ["*.ps1"]
