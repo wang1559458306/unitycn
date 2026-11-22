@@ -1,0 +1,254 @@
+[
+ {
+  "id": "visualstudio",
+  "name": "Microsoft Visual Studio Community 2026",
+  "url": "https://go.microsoft.com/fwlink/?linkid=2348715",
+  "size": 1699733504,
+  "integrity": "",
+  "parent": "",
+  "category": "DEV_TOOL"
+ },
+ {
+  "id": "visualstudioprofessionalunityworkload",
+  "name": "Unity Game Development for Microsoft Visual Studio Professional 2022",
+  "url": "https://aka.ms/vs/17/release/vs_Professional.exe",
+  "size": 1024000000,
+  "integrity": "",
+  "parent": "",
+  "category": "PLUGIN"
+ },
+ {
+  "id": "visualstudioenterpriseunityworkload",
+  "name": "Unity Game Development for Microsoft Visual Studio Enterprise 2019",
+  "url": "https://aka.ms/vs/17/release/vs_Enterprise.exe",
+  "size": 1024000000,
+  "integrity": "",
+  "parent": "",
+  "category": "PLUGIN"
+ },
+ {
+  "id": "android",
+  "name": "Android Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Android-Support-for-Editor-7000.0.0a20.exe",
+  "size": 1752717912,
+  "integrity": "md5-N7TxdC2OnB9UfaeYqOltzg==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-open-jdk-17.0.21+9",
+  "name": "OpenJDK",
+  "url": "https://download.unity3d.com/download_unity/open-jdk/open-jdk-win-x64/jdk17.0.21-9_0175be75431cf4f6f4cfd0004951a8c6445de936519a7ca54f56a026e65e80af.zip",
+  "size": 115288086,
+  "integrity": "",
+  "parent": "android",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-ndk-tools",
+  "name": "Android SDK & NDK Tools",
+  "url": "https://download.unity3d.com/download_unity/android-sdk-tools/1_5312bb398affd0d94b90d3780976e1a162aa91944ef6bb40c8feb10ad6cc360d.zip",
+  "size": 166,
+  "integrity": "",
+  "parent": "android",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-ndk-r27c",
+  "name": "Android NDK",
+  "url": "https://dl.google.com/android/repository/android-ndk-r27c-windows.zip",
+  "size": 781511249,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "cmake-3.22.1",
+  "name": "CMake",
+  "url": "https://dl.google.com/android/repository/cmake-3.22.1-windows.zip",
+  "size": 16116742,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-build-tools-36.0.0",
+  "name": "Android SDK Build Tools",
+  "url": "https://dl.google.com/android/repository/build-tools_r36_windows.zip",
+  "size": 58699878,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-platform-tools-37.0.1",
+  "name": "Android SDK Platform Tools",
+  "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-win.zip",
+  "size": 8044989,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-platforms-34",
+  "name": "Android SDK Platforms 34",
+  "url": "https://dl.google.com/android/repository/platform-34-ext7_r02.zip",
+  "size": 63180079,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-platforms-36",
+  "name": "Android SDK Platforms 36",
+  "url": "https://dl.google.com/android/repository/platform-36_r02.zip",
+  "size": 65878410,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-platforms-37.0",
+  "name": "Android SDK Platforms 37",
+  "url": "https://dl.google.com/android/repository/platform-37.0_r02.zip",
+  "size": 67281901,
+  "integrity": "",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "android-sdk-command-line-tools-21.0",
+  "name": "Android SDK Command Line Tools",
+  "url": "https://dl.google.com/android/repository/commandlinetools-win-15641748_latest.zip",
+  "size": 151965705,
+  "integrity": "sha384-6vXy1lydKkeFiEjBakBhoyDGgv3oAFhJQD8L1ZC1VDVUqpMz8OmekncNjzerVGpJ",
+  "parent": "android-sdk-ndk-tools",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "ios",
+  "name": "iOS Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-iOS-Support-for-Editor-7000.0.0a20.exe",
+  "size": 346582976,
+  "integrity": "md5-x4SIX5rbM88F4ivoBYCZlg==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "appletv",
+  "name": "tvOS Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-AppleTV-Support-for-Editor-7000.0.0a20.exe",
+  "size": 325801784,
+  "integrity": "md5-cUvga4+l0CZYHlWzUZjclw==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "visionos",
+  "name": "visionOS Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-VisionOS-Support-for-Editor-7000.0.0a20.exe",
+  "size": 302116392,
+  "integrity": "md5-kRybt9kOXw9lZyFVea0r1Q==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "linux-il2cpp",
+  "name": "Linux Build Support (IL2CPP)",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Linux-IL2CPP-Support-for-Editor-7000.0.0a20.exe",
+  "size": 72880336,
+  "integrity": "md5-5UoVoin7cTodWWi8Jdc8EA==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "linux-server",
+  "name": "Linux Dedicated Server Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Linux-Server-Support-for-Editor-7000.0.0a20.exe",
+  "size": 272623712,
+  "integrity": "md5-rkrDnooQFFxXB5Fe8ngZjw==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "mac-coreclr",
+  "name": "Mac Build Support (CoreCLR)",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Mac-CoreCLR-Support-for-Editor-7000.0.0a20.exe",
+  "size": 194905760,
+  "integrity": "md5-QpEbKCunHTzActlvq5H5Sw==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "linux-coreclr",
+  "name": "Linux Build Support (CoreCLR)",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Linux-CoreCLR-Support-for-Editor-7000.0.0a20.exe",
+  "size": 153412752,
+  "integrity": "md5-t6qxbo7riy/rgEZkSTS9aA==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "mac-server-coreclr",
+  "name": "Mac Dedicated Server Build Support (CoreCLR)",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Mac-Server-CoreCLR-Support-for-Editor-7000.0.0a20.exe",
+  "size": 193828488,
+  "integrity": "md5-7C+hqnUe6G0qUXBmU+2hQg==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "mac-server",
+  "name": "Mac Dedicated Server Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Mac-Server-Support-for-Editor-7000.0.0a20.exe",
+  "size": 193829048,
+  "integrity": "md5-+tAZJDC+lV+HO7DADOitng==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "universal-windows-platform",
+  "name": "Universal Windows Platform Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Universal-Windows-Platform-Support-for-Editor-7000.0.0a20.exe",
+  "size": 542416208,
+  "integrity": "md5-8I3BT77KxtZFZMawW88o/Q==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "webgl",
+  "name": "Web Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-WebGL-Support-for-Editor-7000.0.0a20.exe",
+  "size": 1209056728,
+  "integrity": "md5-kdZgAUiH1xMdvT6zhRHq5A==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "windows-il2cpp",
+  "name": "Windows Build Support (IL2CPP)",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Windows-IL2CPP-Support-for-Editor-7000.0.0a20.exe",
+  "size": 298110064,
+  "integrity": "md5-vimxuBHge6vFDVtKVgLcdQ==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "windows-server",
+  "name": "Windows Dedicated Server Build Support",
+  "url": "https://download.unity3d.com/download_unity/f4e960bd2f88/TargetSupportInstaller/UnitySetup-Windows-Server-Support-for-Editor-7000.0.0a20.exe",
+  "size": 613594272,
+  "integrity": "md5-a9gOVnRb0f2Pmt4A2KWUTg==",
+  "parent": "",
+  "category": "PLATFORM"
+ },
+ {
+  "id": "documentation",
+  "name": "Documentation",
+  "url": "https://cloudmedia-docs.unity3d.com/docscloudstorage/7000.0/UnityDocumentation.zip",
+  "size": 470250280,
+  "integrity": "",
+  "parent": "",
+  "category": "DOCUMENTATION"
+ }
+]
