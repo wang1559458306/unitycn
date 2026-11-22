@@ -1,0 +1,36 @@
+# 缓存与产物
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.cache/
+
+# 下载产物（体积大，不入库）
+*.exe
+*.zip
+*.pkg
+*.tar.xz
+modules/
+*.parts/
+
+# 代理池：免费代理寿命以小时计，提交了第二天全是死节点
+pool.txt
+pool*.txt
+ranked*.txt
+working.txt
+*.txt.bak
+all.txt
+http.txt
+https.txt
+socks4.txt
+socks5.txt
+big*.txt
+monosans*.txt
+proxyScrape*.txt
+shifty*.txt
+
+# 运行时
+*.log
+.DS_Store
+Thumbs.db
