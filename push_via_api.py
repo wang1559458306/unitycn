@@ -23,9 +23,13 @@ import urllib.request
 
 API = "https://api.github.com"
 SKIP_DIRS = {".git", "__pycache__", ".cache", "modules", "_ci_pending",
-             "build", "dist", ".egg-info"}
-SKIP_EXT = {".exe", ".zip", ".pkg", ".xz", ".tmp", ".parts", ".pyc"}
-SKIP_FILES = {"pool.txt"}
+             "build", "dist"}
+SKIP_EXT = {".exe", ".zip", ".pkg", ".xz", ".tmp", ".parts", ".pyc", ".token"}
+# 文件名黑名单：凭据类文件绝不能上传
+SKIP_FILES = {
+    "pool.txt", ".token", "token.txt", "credentials", ".credentials",
+    ".env", ".netrc", "id_rsa",
+}
 # 目录名包含即跳过（egg-info 形如 unitycn.egg-info）
 SKIP_DIR_PARTS = ("egg-info",)
 
@@ -39,9 +43,15 @@ def ls_files(root):
         for fn in filenames:
             full = os.path.join(dirpath, fn)
             rel = os.path.relpath(full, root).replace("\\", "/")
-            if os.path.splitext(fn)[1].lower() in SKIP_EXT:
+            low = fn.lower()
+            # 双重保险：扩展名 + 文件名黑名单 + 模式匹配
+            if os.path.splitext(low)[1] in SKIP_EXT:
                 continue
-            if fn in SKIP_FILES or (fn.startswith("pool") and fn.endswith(".txt")):
+            if low in SKIP_FILES:
+                continue
+            if low.endswith(".token") or low.startswith(".env"):
+                continue
+            if low.startswith("pool") and low.endswith(".txt"):
                 continue
             out.append((rel, full))
     return sorted(out)
